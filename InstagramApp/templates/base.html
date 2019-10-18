@@ -4,23 +4,21 @@
 <head>
   <meta charset="utf-8">
 
-  {% if title %}
-  <title>Moringa Tribune - {{title}}</title>
-  {% else %}
-    <title> Moringa Tribune </title>
-  {% endif %}
 
   {% block styles %}
     {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'CSS/baseInst.css' %}">
   {% endblock %}
 
 </head>
 <body>
-    {% block content %} <h1 class='text-center'>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+    {% include "navbar.html" %}
 
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      {% bootstrap_javascript %}
+    {% endblock %}
+    {%block content%}
     {% endblock %}
 </body>
 </html>
