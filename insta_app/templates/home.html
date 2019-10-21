@@ -14,10 +14,16 @@
       <div class="col-md-3">
         <p>{{item.img_caption}}</p>
         <div data-toggle="modal" data-target="#{{item.id}}">
-          <!--Display gallery  images  -->
-
+         
+          <!--Display   images  -->
           <img class="img-responsive"style="width:100%;padding-top:20%" src="{{item.image.url}}" alt="">
   
+          <div class="row">
+            {% autoescape on %}
+            {{post.post| safe}}
+           {% endautoescape %}
+       
+          </div>
   
   
         </div>
