@@ -1,9 +1,15 @@
 from django import forms
-from .models import Image
+from .models import Image,Profile
 
 
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Image
         exclude = ['profile','likes','comments','user','post']
+
+class ProfileForm(forms.ModelForm):
+   class Meta:
+       model=Profile
+       fields=['bio','profile_picture']
+       exclude=['user']
        

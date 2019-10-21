@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http  import HttpResponse
 from . models import Image
 from django.contrib.auth.decorators import login_required
-from .forms import NewPostForm
+from .forms import NewPostForm,ProfileForm
 # Create your views here.
 
 
@@ -46,4 +46,4 @@ def profile_edit(request):
        return redirect('profile')
    else:
        form=ProfileForm()
-   return render(request,'profile_edit.html',{"form":form})
+   return render(request,'update.html',{"form":form})

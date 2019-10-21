@@ -22,7 +22,7 @@ class Image(models.Model):
 
 class Profile(models.Model):
    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-   profile_pic = models.ImageField(upload_to='images/')
+   profile_picture = models.ImageField(upload_to='images/')
    bio = models.TextField(max_length=700)
    name = models.CharField(max_length=200)
    def __str__(self):
