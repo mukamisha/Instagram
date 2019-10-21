@@ -11,7 +11,7 @@ def images(request,):
     image= Image.objects.all()
     return render(request, 'home.html',{'images':image})
 
-
+@login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
     if request.method == 'POST':
