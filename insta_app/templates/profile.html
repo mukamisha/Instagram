@@ -2,21 +2,21 @@
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
-<div class="container">
+<div class="container" style="margin-top: 20%">
    <div class= "jumbotron">
- <div class="row">
-   <div class="col-md-4">
+ <div class="row" >
+   <div class="col-md-3">
      <div class="content-section">
         <div class="media">
-          <img src="{{user.profile.profile_picture.url}}" alt="Profile" class="img_profile" >
+          <img src="{{user.profile.profile_pic.url}}" alt="Profile" class="img_profile" >
         </div>
      </div>
    </div>
    <div class="col-md-8">
           <div class="media-body">
-             <div class="mine">
+             <div class="hello">
             <h4 class="account-heading">{{user.username}}</h4>
-            <button class="btn btn-outline-primary" style="margin-left:30px;"><a href="{% url 'profile_edit' %}" >Edit Profile</a></button><i class="fa fa-sun-o" style="font-size: 28px;"></i>
+           
             <ul>
                    <li class="dropdown" class='fas fa-cog' style="margin-right:500px; list-style: none;" >
                      <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">&#xf013;
@@ -24,10 +24,10 @@
                            </a>
                      <ul class="dropdown-menu" role="menu" style="list-style: none;">
                        <li>
-                         <a href="{%url 'welcome'%}">Home</a>
+                         <a href="{%url 'image'%}">Home</a>
                        </li>
                        <li>
-                         <a href="{%url 'new-post'%}">Post something</a>
+                         <a href="{%url 'new_post'%}">Post something</a>
                        </li>
                        <li>
                          <a href="{%url 'profile'%}">Profile</a>
@@ -40,7 +40,7 @@
                        </li>
                      </ul>
            </div>
-           <div class="init" style="margin-left: 3px;justify-content: space-around;;">
+           <div class="yes" style="margin-left: 3px;justify-content: space-around;;">
              <p><strong>{{images|length}} Posts</strong></p>
              <p><strong>{{user|length}} Followers</strong></p>
              <p><strong>{{user|length}} Following</strong></p>
@@ -52,7 +52,7 @@
 </div>
  <hr>
  <div class="row">
-   {% for user in pi_images %}
+   {% for user in pictures %}
    <div class="col-md-4" style="margin-right: 5%;">
      <img src="{{user.image.url}}" class="img-responsive">
    </div>
@@ -67,7 +67,7 @@
        height: 200px;
        border-radius:50%;
      }
-     .mine,.init{
+     .hello,.yes{
       display: flex;
       justify-content: space-between;
      }

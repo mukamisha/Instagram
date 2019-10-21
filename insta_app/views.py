@@ -31,5 +31,5 @@ def new_post(request):
 def profile(request, username=None):
    
     current_user = request.user
-    pi_images = Image.objects.filter(user=current_user)
-    return render(request,"profile.html",locals(),{"pi_images":pi_images})
+    pictures = Image.objects.filter(user=current_user)
+    return render(request,"profile.html",locals(),{"pictures":pictures})
