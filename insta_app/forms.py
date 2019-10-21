@@ -13,3 +13,7 @@ class ProfileForm(forms.ModelForm):
        fields=['bio','profile_picture']
        exclude=['user']
        
+class CommentForm(forms.ModelForm):
+   class Meta:
+       model=Comment
+       exclude=['comment_image','posted_by','profile']

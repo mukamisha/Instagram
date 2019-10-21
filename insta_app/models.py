@@ -38,7 +38,7 @@ class Profile(models.Model):
 
 class Comment(models.Model):
    posted_by=models.ForeignKey(User, on_delete=models.CASCADE,null=True)
-   comment_image=models.ForeignKey(Image,on_delete=models.CASCADE,null=True)
+#    comment_picture=models.ForeignKey(Image,on_delete=models.CASCADE,null=True)
    comment=models.CharField(max_length=20,null=True)
    def __str__(self):
        return self.posted_by
