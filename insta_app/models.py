@@ -17,3 +17,20 @@ class Image(models.Model):
 
     def __str__(self):
         return self.img_name
+
+
+
+class Profile(models.Model):
+   user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+   profile_pic = models.ImageField(upload_to='images/')
+   bio = models.TextField(max_length=700)
+   name = models.CharField(max_length=200)
+   def __str__(self):
+       return self.name
+   @classmethod
+   def search_profile(cls, username):
+       return cls.objects.filter(name__icontains=username)
+   def save_profile(self):
+       self.user
+   def delete_profile(self):
+       self.delete()

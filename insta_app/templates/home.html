@@ -12,21 +12,16 @@
     <div class="row" style="width:80%;padding: 0 -8px;display: flex;padding: 0 -8px">
       {% for item in images %}
       <div class="col-md-3">
-        <p>{{item.img_caption}}</p>
+        
         <div data-toggle="modal" data-target="#{{item.id}}">
-         
-          <!--Display   images  -->
+          <!--Display gallery  images  -->
+
           <img class="img-responsive"style="width:100%;padding-top:20%" src="{{item.image.url}}" alt="">
   
-          <div class="row">
-            {% autoescape on %}
-            {{post.post| safe}}
-           {% endautoescape %}
-       
-          </div>
   
   
         </div>
+        <p>{{item.img_caption}}</p>
         </div>
         {%endfor%}
         </div>
