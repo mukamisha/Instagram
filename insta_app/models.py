@@ -36,6 +36,9 @@ class Image(models.Model):
        images=cls.objects.all().prefetch_related('comment_set')
        return images
 
+    def total_likes(self):
+       self.likes.count()
+
 class Comment(models.Model):
    posted_by=models.ForeignKey(User, on_delete=models.CASCADE,null=True)
    comment_pic=models.ForeignKey(Image,on_delete=models.CASCADE,null=True)
