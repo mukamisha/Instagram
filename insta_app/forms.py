@@ -1,5 +1,5 @@
 from django import forms
-from .models import Image,Profile
+from .models import Image,Profile,Comment
 
 
 class NewPostForm(forms.ModelForm):

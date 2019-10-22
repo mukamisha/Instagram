@@ -10,18 +10,24 @@
     <h2 style="text-align:center ;color:black;font-family:Georgia, 'Times New Roman', Times, serif;margin-top: 10%">Welcome To My Instagram App
     </h2>
     <div class="row" style="width:80%;padding: 0 -8px;display: flex;padding: 0 -8px">
-      {% for item in images %}
+      {% for x in images %}
       <div class="col-md-3">
         
-        <div data-toggle="modal" data-target="#{{item.id}}">
-          <!--Display gallery  images  -->
+        <div data-toggle="modal" data-target="#{{x.id}}">
+          <!--Display   images  -->
 
-          <img class="img-responsive"style="width:100%;padding-top:20%" src="{{item.image.url}}" alt="">
-  
-  
+          <img class="img-responsive"style="width:100%;padding-top:20%" src="{{x.image.url}}" alt="">
   
         </div>
-        <p>{{item.img_caption}}</p>
+        <p>{{x.img_caption}}</p>
+        <p><i class="fa fa-comment"></i></p>
+        <hr>
+        <a href="{% url 'comment' x.id %}">comment</a>
+        {% for coment in x.comment_set.all %}
+        <p>{{coment.comment}}</p>
+        {% empty %}
+        {% endfor %}
+          
         </div>
         {%endfor%}
         </div>

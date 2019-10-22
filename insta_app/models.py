@@ -4,21 +4,6 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 
-class Image(models.Model):
-    image= models.ImageField(upload_to = 'image/')
-    img_name = models.CharField(max_length =30)
-    img_caption = models.TextField()
-    post = HTMLField()
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    profile = models.ForeignKey(Profile)
-    # likes = models.IntField(max_length =20)
-    comments= models.TextField()
-
-    def __str__(self):
-        return self.img_name
-
-
-
 class Profile(models.Model):
    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
    profile_picture = models.ImageField(upload_to='images/')
@@ -34,6 +19,22 @@ class Profile(models.Model):
    def delete_profile(self):
        self.delete()
 
+class Image(models.Model):
+    image= models.ImageField(upload_to = 'image/')
+    img_name = models.CharField(max_length =30)
+    img_caption = models.TextField()
+    post = HTMLField()
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    likes = models.IntField(max_length =20)
+    comments= models.TextField()
+
+    def __str__(self):
+        return self.img_name
+
+    @classmethod
+    def get_all_images(cls):
+       images=cls.objects.all().prefetch_related('comment_set')
+       return images
 
 class Comment(models.Model):
    posted_by=models.ForeignKey(User, on_delete=models.CASCADE,null=True)
@@ -41,5 +42,8 @@ class Comment(models.Model):
    comment=models.CharField(max_length=20,null=True)
    def __str__(self):
        return self.posted_by
+
+
+
 
 
