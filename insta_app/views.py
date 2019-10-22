@@ -52,15 +52,15 @@ def profile_edit(request):
 def comment(request,image_id):
    current_user=request.user
    if request.method=='POST':
-       image_item=Image.objects.filter(id=image_id).first()
+       image_detail=Image.objects.filter(id=image_id).first()
 
        form=CommentForm(request.POST,request.FILES)
        if form.is_valid():
            comment=form.save(commit=False)
            comment.posted_by=current_user
-           comment.comment_image=image_item
+           comment.comment_pic=image_detail
            comment.save()
-       return redirect('welcome')
+       return redirect('image')
    else:
        form=CommentForm()
    return render(request,'comment.html',{"form":form,"image_id":image_id})

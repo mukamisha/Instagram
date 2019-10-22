@@ -10,10 +10,9 @@ class Image(models.Model):
     img_caption = models.TextField()
     post = HTMLField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    
-    # profile = models.ForeignKey(Profile)
+    profile = models.ForeignKey(Profile)
     # likes = models.IntField(max_length =20)
-    # comments= models.TextField()
+    comments= models.TextField()
 
     def __str__(self):
         return self.img_name
@@ -38,7 +37,7 @@ class Profile(models.Model):
 
 class Comment(models.Model):
    posted_by=models.ForeignKey(User, on_delete=models.CASCADE,null=True)
-#    comment_picture=models.ForeignKey(Image,on_delete=models.CASCADE,null=True)
+   comment_pic=models.ForeignKey(Image,on_delete=models.CASCADE,null=True)
    comment=models.CharField(max_length=20,null=True)
    def __str__(self):
        return self.posted_by
