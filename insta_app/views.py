@@ -29,7 +29,6 @@ def new_post(request):
 
 @login_required(login_url='/accounts/login/')
 def profile(request, username=None):
-   
     current_user = request.user
     pictures = Image.objects.filter(user=current_user)
     return render(request,"profile.html",locals(),{"pictures":pictures})

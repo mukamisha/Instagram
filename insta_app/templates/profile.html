@@ -2,23 +2,45 @@
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
+<style>
+  .img_profilepic{
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+  }
+  .hello,.yes{
+   display: flex;
+   justify-content: space-between;
+   height: 30%;
+   margin-top:10%;
+  }
+  .good{
+margin-left: 50%;
+
+  }
+</style>
 <div class="container">
-   <div class= "jumbotron">
- <div class="row">
+   <div  class="mamy">
+ <div class="row" >
    <div class="col-md-4">
-     <div class="content-section">
+    
         <div class="media">
-          <img src="{{user.profile.profile_picture.url}}" alt="Profile" class="img_profile" >
+          <img src="{{user.profile.profile_picture.url}}" alt="Profile" class="img_profilepic" >
+          <h4 class="account-heading">{{user.username}}</h4>
+          <p class="text-secondary ml-4">Email:{{user.email}}</p>
+          <p class="text-secondary ml-4">Bio:{{user.profile.bio}}</p>
         </div>
-     </div>
+  
    </div>
    <div class="col-md-8">
-          <div class="media-body">
-             <div class="hello">
-            <h4 class="account-heading">{{user.username}}</h4>
-            <button class="btn btn-outline-primary" style="margin-left:30px;"><a href="{% url 'profile_edit' %}" >Edit Profile</a></button><i class="fa fa-sun-o" style="font-size: 28px;"></i>
+        
+          <div class="hello">
+            <button class="btn btn-secondary" style="margin-left:5%;"><a href="{% url 'profile_edit' %}" >Edit Profile</a></button><i style="font-size: 28px;"></i>
+          </div>
+          <div class="good">
             <ul>
-                   <li class="dropdown" class='fas fa-cog' style="margin-right:500px; list-style: none;" >
+                  <li class="dropdown" class='fas fa-cog' style="margin-right:500px; list-style: none;" >
                      <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">&#xf013;
                                <span class="caret"></span>
                            </a>
@@ -29,47 +51,31 @@
                        <li>
                          <a href="{%url 'new_post'%}">Post something</a>
                        </li>
+                    
                        <li>
-                         <a href="{%url 'profile'%}">Profile</a>
-                       </li>
-                       <li>
-                               <a href="/logout">Logout</a>
-                             </li>
+                           <a href="/logout">Logout</a>
+                        </li>
                        <li>
                          <a href="/accounts/password/change">Change Password</a>
                        </li>
                      </ul>
-           </div>
-           <div class="yes" style="margin-left: 3px;justify-content: space-around;;">
-             <p><strong>{{images|length}} Posts</strong></p>
-             <p><strong>{{user|length}} Followers</strong></p>
-             <p><strong>{{user|length}} Following</strong></p>
-           </div>
-            <p class="text-secondary ml-4">Email:{{user.email}}</p>
-            <p class="text-secondary ml-4">Bio:{{user.profile.bio}}</p>
+                  </li>
+              
+              </div>
+         
+        
           </div>
         </div>
 </div>
  <hr>
- <div class="row">
+ <div class="row" style="width:100%" >
    {% for user in pictures %}
-   <div class="col-md-4" style="margin-right: 5%;">
-     <img src="{{user.image.url}}" class="img-responsive">
+   <div class="col-md-3" style="margin-left: 5%;height: 30%">
+     <img src="{{user.image.url}}" class="img-responsive" style="width:70%;height: 30%">
    </div>
    {% endfor %}
  </div>
 </div>
 </div>
- <style>
-     .img_profile{
-       vertical-align: middle;
-       width: 200px;
-       height: 200px;
-       border-radius:50%;
-     }
-     .hello,.yes{
-      display: flex;
-      justify-content: space-between;
-     }
-   </style>
+ 
  {% endblock %}

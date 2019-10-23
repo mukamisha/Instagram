@@ -1,47 +1,52 @@
 {%extends 'base.html'%}
-{% block content %}
 {{block.super}}
+{% block content %}
 
 
-
+<style>
+  .img_profilepic{
+        vertical-align: middle;
+        width: 90px;
+        height: 90px;
+        border-radius:50%;
+      }
+ 
+ </style>
 
 
 <div class="container" >
-    <h2 style="text-align:center ;color:black;font-family:Georgia, 'Times New Roman', Times, serif;margin-top: 10%">Welcome To My Instagram App
-    </h2>
-    <div class="row" style="width:80%;padding: 0 -8px;display: flex;padding: 0 -8px">
-      {% for x in images %}
-      <div class="col-md-3">
-        
-        <div data-toggle="modal" data-target="#{{x.id}}">
-          <!--Display   images  -->
-
-          <img class="img-responsive"style="width:100%;padding-top:20%" src="{{x.image.url}}" alt="">
   
+
+      {% for x in images %}
+      <div > 
+        <img src="{{user.profile.profile_picture.url}}" alt="Profile" class="img_profilepic" style="margin-top:10%;margin-left: 23%;">
+    </div>
+        <div data-toggle="modal" data-target="#{{x.id}}" style="width:69%;margin-left:30%" >
+          <!--Display   images  -->
+          <img class="img-responsive"style="width:50%;padding-top:5%" src="{{x.image.url}}" alt="">
         </div>
-        <p>{{x.img_caption}}</p>
-        <p><i class="fa fa-comment"></i></p>
-        <hr>
-        <a href="{% url 'comment' x.id %}">comment</a>
-        {% for coment in x.comment_set.all %}
-        <p>{{coment.comment}}</p>
-        {% empty %}
-        {% endfor %}
+       
+          <div class="row" style="margin-left:30%;margin-top:2%">
+              <div>
+              <p>{{x.img_caption}}</p>
+              </div>
+              <!-- <p><i class="fa fa-comment"></i></p> -->
+            
+              <a href="{% url 'comment' x.id %}"class="fa fa-comment"></a>
           
-        <div class="row">
-          <div class="col-md-3">
-                        <a class='info' href="{% url 'likes' x.id%}">
-                         <p>{{x.likes}} likes<i class="fa fa-heart-o"></i></p>
+              {% for coment in x.comment_set.all %}
+              <p>{{coment.comment}}</p>
+              {% empty %}
+              {% endfor %}
+              <a  href="{% url 'likes' x.id%}" >
+              <p>{{x.likes}} likes</p>
           </a><span style="font-size:20px;">{{x.likes.count}}</span>
         </div>
-
-        </div>
-
-        </div>
+         <hr>
         {%endfor%}
-        </div>
+      
+</div>
 
-        
-        </div>
-        {% endblock %}
+
+{% endblock %}
         
