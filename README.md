@@ -32,7 +32,7 @@ by following them , chatting ,liking and commenting on their posts
     
 
 ## This is my project link
-https://mukamisha.github.io/DelanieProject/
+https://instajacky.herokuapp.com/profile
 
 ## SUPPORT AND CONTACT 
 email:mukamishajacky97@gmail.com.
