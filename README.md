@@ -1,5 +1,5 @@
 DelanieStudio
-# DelanieStudio
+
 ### BY **JACKY**
 ## DESCRIPTION
 ### Instagram
