@@ -1,1 +1,1 @@
-web: gunicorn instajacky.wsgi --log-file -
+web: gunicorn InstagramPro.wsgi --log-file -
