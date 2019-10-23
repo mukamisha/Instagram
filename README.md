@@ -1,5 +1,4 @@
-DelanieStudio
-
+### DelanieStudio
 ### BY **JACKY**
 ## DESCRIPTION
 ### Instagram
@@ -10,7 +9,7 @@ by following them , chatting ,liking and commenting on their posts
 
 	*UBUNTU.
 	*VISIO STUDIO CODE.	
-    *GOOGLE CHROME
+    *GOOGLE CHROME.
 
 ## TECHNOLOGY USED:
     * HTML.
